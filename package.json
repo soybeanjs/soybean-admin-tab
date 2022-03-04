@@ -1,6 +1,6 @@
 {
   "name": "soybean-admin-tab",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "description": "a tab component of admin template, support vue2 and vue3",
   "private": false,
   "main": "./dist/index.umd.js",
