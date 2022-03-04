@@ -68,7 +68,7 @@ withDefaults(defineProps<Props>(), {
   bgColor: () => ['#ffffff', '#18181c'],
   hoverBgColor: () => ['#dee1e6', '#3f3c37'],
   mixColor: () => ['#ffffff', '#000'],
-  mixRatio: () => [0.2, 0.3]
+  mixRatio: () => [0.13, 0.35]
 });
 
 const emit = defineEmits<Emits>();
