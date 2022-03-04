@@ -23,6 +23,13 @@
     <div v-if="closable" class="soybean-admin-tab__chrome-tab__icon">
       <icon-close :is-active="isActive" :active-color="primaryColor" @click="handleClose" />
     </div>
+    <div
+      class="soybean-admin-tab__chrome-tab__divider"
+      :class="{
+        'soybean-admin-tab__chrome-tab__divider--hide': isHover || isActive,
+        'soybean-admin-tab__chrome-tab__divider--dark': darkMode
+      }"
+    ></div>
   </div>
 </template>
 
@@ -116,7 +123,28 @@ const style = c(
     }),
     c('&__icon', {
       paddingLeft: '18px'
-    })
+    }),
+    c(
+      '&__divider',
+      {
+        position: 'absolute',
+        right: '8px',
+        zIndex: 2,
+        width: '1px',
+        height: '16px',
+        backgroundColor: '#1f2225',
+        opacity: 1,
+        transition: 'opacity 0.3s ease-in-out'
+      },
+      [
+        c('&--hide', {
+          opacity: 0
+        }),
+        c('&--dark', {
+          backgroundColor: 'rgba(255,255,255,0.9) !important'
+        })
+      ]
+    )
   ]
 );
 style.render();
