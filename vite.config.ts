@@ -19,7 +19,7 @@ export default defineConfig(configEnv => {
       vue(),
       windicss(),
       dts({
-        include: ['./src/index.ts', './src/index.vue', './src/volar.d.ts'],
+        include: ['./src/index.ts', './src/ButtonTab.vue', './src/ChromeTab.vue'],
         beforeWriteFile(filePath, content) {
           return {
             filePath: filePath.replace('/dist/src/', '/dist/'),

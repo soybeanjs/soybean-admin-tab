@@ -23,6 +23,8 @@ import { useBoolean } from '@/hooks';
 import { addColorAlpha } from '@/utils';
 
 interface Props {
+  /** 暗黑模式 */
+  darkMode?: boolean;
   /** 激活状态 */
   isActive?: boolean;
   /** 主题颜色 */
@@ -33,8 +35,6 @@ interface Props {
   darkBorderColor?: string;
   /** 是否显示关闭图标 */
   closable?: boolean;
-  /** 暗黑模式 */
-  darkMode?: boolean;
 }
 
 interface Emits {
@@ -43,17 +43,16 @@ interface Emits {
 }
 
 const props = withDefaults(defineProps<Props>(), {
+  darkMode: false,
   isActive: false,
   primaryColor: '#1890ff',
   borderColor: '#e5e7eb',
   darkBorderColor: '#ffffff3d',
-  closable: true,
-  darkMode: false
+  closable: true
 });
 
 const emit = defineEmits<Emits>();
 
-const { c } = CssRender();
 const { bool: isHover, setTrue, setFalse } = useBoolean();
 
 const isIconActive = computed(() => props.isActive || isHover.value);
@@ -78,6 +77,7 @@ function handleClose(e: MouseEvent) {
 }
 
 // css
+const { c } = CssRender();
 const style = c(
   '.soybean-admin-tab__button-tab',
   {

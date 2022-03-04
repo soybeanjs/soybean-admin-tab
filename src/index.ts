@@ -1,45 +1,43 @@
-import type { App } from 'vue-demi';
-import SoybeanAdminLayout from './index.vue';
+import ButtonTab from './ButtonTab.vue';
+import ChromeTab from './ChromeTab.vue';
 
-function install(app: App) {
-  app.component('SoybeanAdminLayout', SoybeanAdminLayout);
+/** 填充颜色： [默认颜色, 暗黑主题颜色] */
+export type FillColor = [string, string];
+
+/** 混合比例：[默认, 暗黑] */
+export type MixRatio = [number, number];
+
+export interface ButtonTabProps {
+  /** 暗黑模式 */
+  darkMode?: boolean;
+  /** 激活状态 */
+  isActive?: boolean;
+  /** 主题颜色 */
+  primaryColor?: string;
+  /** 边框颜色 */
+  borderColor?: string;
+  /** 暗黑模式的边框颜色 */
+  darkBorderColor?: string;
+  /** 是否显示关闭图标 */
+  closable?: boolean;
+}
+export interface ChromeTabProps {
+  /** 暗黑模式 */
+  darkMode?: boolean;
+  /** 激活状态 */
+  isActive?: boolean;
+  /** 主题颜色 */
+  primaryColor?: string;
+  /** 是否显示关闭图标 */
+  closable?: boolean;
+  /** 背景颜色 */
+  bgColor?: FillColor;
+  /** 悬浮时的背景颜色 */
+  hoverBgColor?: FillColor;
+  /** 激活状态时的混合颜色 */
+  mixColor?: FillColor;
+  /** 混合比例(主题颜色的占比) */
+  mixRatio?: MixRatio;
 }
 
-SoybeanAdminLayout.install = install;
-
-export interface LayoutProps {
-  /** 布局模式 */
-  mode?: 'vertical' | 'horizontal';
-  /** 最小宽度 */
-  minWidth?: number;
-  /** 头部可见 */
-  headerVisible?: boolean;
-  /** 头部高度 */
-  headerHeight?: number;
-  /** 标签可见 */
-  tabVisible?: boolean;
-  /** 标签页高度 */
-  tabHeight?: number;
-  /** 固定头部和标签 */
-  fixedHeaderAndTab?: boolean;
-  /** 底部可见 */
-  footerVisible?: boolean;
-  /** 底部高度 */
-  footerHeight?: number;
-  /** 固定底部 */
-  fixedFooter?: boolean;
-  /** 侧边可见 */
-  siderVisible?: boolean;
-  /** 侧边栏高度 */
-  siderWidth?: number;
-  /** 侧边栏折叠状态的高度 */
-  siderCollapsedWidth?: number;
-  /** 侧边栏折叠状态 */
-  siderCollapse?: boolean;
-  /** 动画过渡时间 */
-  transitionDuration?: number;
-  /** 动画过渡速度曲线 */
-  transitionTimingFunction?: string;
-}
-
-export default SoybeanAdminLayout;
+export { ButtonTab, ChromeTab };
