@@ -128,7 +128,7 @@ const style = c(
       '&__divider',
       {
         position: 'absolute',
-        right: '8px',
+        right: '7.5px',
         zIndex: 2,
         width: '1px',
         height: '16px',
