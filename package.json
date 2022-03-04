@@ -12,6 +12,7 @@
     "build": "npm run typecheck && vite build",
     "build:vercel": "cross-env VITE_IS_VERCEL=1 vite build",
     "release": "standard-version",
+		"publish": "npm run release && git push --follow-tags origin main && npm publish",
     "preview": "vite preview",
     "lint": "eslint --fix ./ --ext .vue,.js,jsx,.ts,tsx",
     "prepare": "husky install"
