@@ -1,6 +1,6 @@
 {
   "name": "soybean-admin-tab",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "a tab component of admin template, support vue2 and vue3",
   "private": false,
   "main": "./dist/index.umd.js",
@@ -11,7 +11,7 @@
     "typecheck": "vue-tsc",
     "build": "npm run typecheck && vite build",
     "build:vercel": "cross-env VITE_IS_VERCEL=1 vite build",
-		"release": "standard-version",
+    "release": "standard-version",
     "preview": "vite preview",
     "lint": "eslint --fix ./ --ext .vue,.js,jsx,.ts,tsx",
     "prepare": "husky install"
