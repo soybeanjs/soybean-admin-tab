@@ -89,6 +89,7 @@ const style = c(
     paddingLeft: '14px',
     paddingRight: '6px',
     borderWidth: '1px',
+    borderStyle: 'solid',
     borderRadius: '2px',
     cursor: 'pointer',
     transition: 'all 0.3s ease-in-out'

@@ -24,7 +24,7 @@ export function useCssRender() {
   };
 }
 
-export function useBoolean(initValue: boolean = false) {
+export function useBoolean(initValue = false) {
   const bool = ref(initValue);
 
   function setBool(value: boolean) {
