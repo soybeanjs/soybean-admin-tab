@@ -91,8 +91,7 @@ const style = c(
     borderWidth: '1px',
     borderStyle: 'solid',
     borderRadius: '2px',
-    cursor: 'pointer',
-    transition: 'all 0.3s ease-in-out'
+    cursor: 'pointer'
   },
   [
     c('&--unclosable', { paddingRight: '14px !important' }),
