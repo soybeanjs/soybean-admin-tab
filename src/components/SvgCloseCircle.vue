@@ -17,5 +17,7 @@
   </svg>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+defineOptions({ name: 'SvgCloseCircle' });
+</script>
 <style scoped></style>

@@ -1,11 +1,11 @@
 <template>
   <div
-    class="soybean-admin-tab__chrome-tab"
-    :class="{ 'soybean-admin-tab__chrome-tab--active': isActive, 'soybean-admin-tab__chrome-tab--hover': isHover }"
+    class="admin-tab__chrome-tab"
+    :class="{ 'admin-tab__chrome-tab--active': isActive, 'admin-tab__chrome-tab--hover': isHover }"
     @mouseenter="setTrue"
     @mouseleave="setFalse"
   >
-    <div class="soybean-admin-tab__chrome-tab__bg">
+    <div class="admin-tab__chrome-tab__bg">
       <svg-radius-bg
         :dark-mode="darkMode"
         :is-active="isActive"
@@ -17,29 +17,31 @@
         :mix-ratio="mixRatio"
       />
     </div>
-    <span class="soybean-admin-tab__chrome-tab__slot">
+    <span class="admin-tab__chrome-tab__slot">
       <slot></slot>
     </span>
-    <div v-if="closable" class="soybean-admin-tab__chrome-tab__icon">
+    <div v-if="closable" class="admin-tab__chrome-tab__icon">
       <icon-close :is-active="isActive" :active-color="primaryColor" @click="handleClose" />
     </div>
     <div
-      class="soybean-admin-tab__chrome-tab__divider"
+      class="admin-tab__chrome-tab__divider"
       :class="{
-        'soybean-admin-tab__chrome-tab__divider--hide': isHover || isActive,
-        'soybean-admin-tab__chrome-tab__divider--dark': darkMode
+        'admin-tab__chrome-tab__divider--hide': isHover || isActive,
+        'admin-tab__chrome-tab__divider--dark': darkMode
       }"
     ></div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { CssRender } from 'css-render';
 import { IconClose, SvgRadiusBg } from '@/components';
-import { useBoolean } from '@/hooks';
+import { useCssRender, useBoolean } from '@/hooks';
+
+defineOptions({ name: 'ChromeTab' });
 
 /** 填充颜色： [默认颜色, 暗黑主题颜色] */
 type FillColor = [string, string];
+
 /** 混合比例：[默认, 暗黑] */
 type MixRatio = [number, number];
 
@@ -62,11 +64,6 @@ interface Props {
   mixRatio?: MixRatio;
 }
 
-interface Emits {
-  /** 点击关闭图标 */
-  (e: 'close'): void;
-}
-
 withDefaults(defineProps<Props>(), {
   darkMode: false,
   isActive: false,
@@ -78,7 +75,14 @@ withDefaults(defineProps<Props>(), {
   mixRatio: () => [0.13, 0.35]
 });
 
+interface Emits {
+  /** 点击关闭图标 */
+  (e: 'close'): void;
+}
+
 const emit = defineEmits<Emits>();
+
+const { cssRender, c } = useCssRender();
 
 const { bool: isHover, setTrue, setFalse } = useBoolean();
 
@@ -87,10 +91,8 @@ function handleClose(e: MouseEvent) {
   emit('close');
 }
 
-// css
-const { c } = CssRender();
-const style = c(
-  '.soybean-admin-tab__chrome-tab',
+cssRender(
+  '.admin-tab__chrome-tab',
   {
     position: 'relative',
     display: 'inline-flex',
@@ -147,7 +149,5 @@ const style = c(
     )
   ]
 );
-style.render();
-style.mount();
 </script>
 <style scoped></style>

@@ -1,15 +1,15 @@
 <template>
   <div
-    class="soybean-admin-tab__button-tab"
-    :class="{ 'soybean-admin-tab__button-tab--unclosable': !closable }"
+    class="admin-tab__button-tab"
+    :class="{ 'admin-tab__button-tab--unclosable': !closable }"
     :style="buttonStyle"
     @mouseenter="setTrue"
     @mouseleave="setFalse"
   >
-    <span class="soybean-admin-tab__button-tab__preffix">
+    <span class="admin-tab__button-tab__preffix">
       <slot></slot>
     </span>
-    <div v-if="closable" class="soybean-admin-tab__button-tab__icon">
+    <div v-if="closable" class="admin-tab__button-tab__icon">
       <icon-close :is-active="isIconActive" :active-color="primaryColor" @click="handleClose" />
     </div>
   </div>
@@ -17,10 +17,11 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { CssRender } from 'css-render';
 import { IconClose } from '@/components';
-import { useBoolean } from '@/hooks';
+import { useCssRender, useBoolean } from '@/hooks';
 import { addColorAlpha } from '@/utils';
+
+defineOptions({ name: 'ButtonTab' });
 
 interface Props {
   /** 暗黑模式 */
@@ -37,11 +38,6 @@ interface Props {
   closable?: boolean;
 }
 
-interface Emits {
-  /** 点击关闭图标 */
-  (e: 'close'): void;
-}
-
 const props = withDefaults(defineProps<Props>(), {
   darkMode: false,
   isActive: false,
@@ -51,7 +47,14 @@ const props = withDefaults(defineProps<Props>(), {
   closable: true
 });
 
+interface Emits {
+  /** 点击关闭图标 */
+  (e: 'close'): void;
+}
+
 const emit = defineEmits<Emits>();
+
+const { cssRender, c } = useCssRender();
 
 const { bool: isHover, setTrue, setFalse } = useBoolean();
 
@@ -76,10 +79,8 @@ function handleClose(e: MouseEvent) {
   emit('close');
 }
 
-// css
-const { c } = CssRender();
-const style = c(
-  '.soybean-admin-tab__button-tab',
+cssRender(
+  '.admin-tab__button-tab',
   {
     position: 'relative',
     display: 'inline-flex',
@@ -99,7 +100,5 @@ const style = c(
     c('&__icon', { paddingLeft: '10px' })
   ]
 );
-style.render();
-style.mount();
 </script>
 <style scoped></style>

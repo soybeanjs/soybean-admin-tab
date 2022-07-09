@@ -13,10 +13,11 @@
 </template>
 
 <script lang="ts" setup>
-import { CssRender } from 'css-render';
-import { useBoolean } from '@/hooks';
+import { useCssRender, useBoolean } from '@/hooks';
 import SvgClose from './SvgClose.vue';
 import SvgCloseCircle from './SvgCloseCircle.vue';
+
+defineOptions({ name: 'IconClose' });
 
 interface Props {
   /** 激活状态 */
@@ -33,11 +34,10 @@ withDefaults(defineProps<Props>(), {
   activeColor: '#1890ff'
 });
 
-const { c } = CssRender();
+const { cssRender, c } = useCssRender();
 const { bool: isHover, setTrue, setFalse } = useBoolean();
 
-// css
-const style = c(
+cssRender(
   '.soybean-admin-tab__icon',
   {
     position: 'relative',
@@ -56,7 +56,5 @@ const style = c(
     c('&-svg', { position: 'absolute', width: '16px', height: '16px' })
   ]
 );
-style.render();
-style.mount();
 </script>
 <style scoped></style>

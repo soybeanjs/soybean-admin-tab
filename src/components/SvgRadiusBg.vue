@@ -26,6 +26,8 @@
 import { computed } from 'vue';
 import { mixColor } from '@/utils';
 
+defineOptions({ name: 'SvgRadiusBg' });
+
 /** 填充颜色： [默认颜色, 暗黑主题颜色] */
 type FillColor = [string, string];
 /** 混合比例：[默认, 暗黑] */

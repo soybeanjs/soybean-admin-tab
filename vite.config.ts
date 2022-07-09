@@ -1,6 +1,7 @@
 import { fileURLToPath } from 'url';
 import { defineConfig, loadEnv } from 'vite';
 import vue from '@vitejs/plugin-vue';
+import DefineOption from 'unplugin-vue-define-options/vite';
 import dts from 'vite-plugin-dts';
 import unocss from 'unocss/vite';
 
@@ -17,6 +18,7 @@ export default defineConfig(configEnv => {
     },
     plugins: [
       vue(),
+      DefineOption(),
       unocss({ include: ['src/App.vue'] }),
       dts({
         include: ['./src/index.ts', './src/ButtonTab.vue', './src/ChromeTab.vue'],

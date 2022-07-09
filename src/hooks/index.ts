@@ -20,7 +20,8 @@ export function useCssRender() {
   });
 
   return {
-    cssRender
+    cssRender,
+    c
   };
 }
 
