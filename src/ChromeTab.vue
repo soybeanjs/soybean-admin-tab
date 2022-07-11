@@ -34,8 +34,9 @@
 </template>
 
 <script setup lang="ts">
+import { CssRender } from 'css-render';
 import { IconClose, SvgRadiusBg } from '@/components';
-import { useCssRender, useBoolean } from '@/hooks';
+import { useBoolean } from '@/hooks';
 
 defineOptions({ name: 'ChromeTab' });
 
@@ -82,8 +83,6 @@ interface Emits {
 
 const emit = defineEmits<Emits>();
 
-const { cssRender, c } = useCssRender();
-
 const { bool: isHover, setTrue, setFalse } = useBoolean();
 
 function handleClose(e: MouseEvent) {
@@ -91,7 +90,8 @@ function handleClose(e: MouseEvent) {
   emit('close');
 }
 
-cssRender(
+const { c } = CssRender();
+const style = c(
   '.admin-tab__chrome-tab',
   {
     position: 'relative',
@@ -149,5 +149,7 @@ cssRender(
     )
   ]
 );
+style.render();
+style.mount();
 </script>
 <style scoped></style>

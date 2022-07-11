@@ -1,19 +1,20 @@
 <template>
   <div
-    class="soybean-admin-tab__icon"
+    class="admin-tab__icon"
     :style="{ color: isActive ? activeColor : defaultColor }"
     @mouseenter="setTrue"
     @mouseleave="setFalse"
   >
-    <transition name="soybean-admin-tab__icon-fade">
-      <svg-close-circle v-if="isHover" key="hover" class="soybean-admin-tab__icon-svg" />
-      <svg-close v-else key="unhover" class="soybean-admin-tab__icon-svg" />
+    <transition name="admin-tab__icon-fade">
+      <svg-close-circle v-if="isHover" key="hover" class="admin-tab__icon-svg" />
+      <svg-close v-else key="unhover" class="admin-tab__icon-svg" />
     </transition>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { useCssRender, useBoolean } from '@/hooks';
+import { CssRender } from 'css-render';
+import { useBoolean } from '@/hooks';
 import SvgClose from './SvgClose.vue';
 import SvgCloseCircle from './SvgCloseCircle.vue';
 
@@ -34,11 +35,11 @@ withDefaults(defineProps<Props>(), {
   activeColor: '#1890ff'
 });
 
-const { cssRender, c } = useCssRender();
 const { bool: isHover, setTrue, setFalse } = useBoolean();
 
-cssRender(
-  '.soybean-admin-tab__icon',
+const { c } = CssRender();
+const style = c(
+  '.admin-tab__icon',
   {
     position: 'relative',
     display: 'flex',
@@ -56,5 +57,7 @@ cssRender(
     c('&-svg', { position: 'absolute', width: '16px', height: '16px' })
   ]
 );
+style.render();
+style.mount();
 </script>
 <style scoped></style>

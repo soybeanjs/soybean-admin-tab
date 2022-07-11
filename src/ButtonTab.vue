@@ -17,8 +17,9 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
+import { CssRender } from 'css-render';
 import { IconClose } from '@/components';
-import { useCssRender, useBoolean } from '@/hooks';
+import { useBoolean } from '@/hooks';
 import { addColorAlpha } from '@/utils';
 
 defineOptions({ name: 'ButtonTab' });
@@ -54,8 +55,6 @@ interface Emits {
 
 const emit = defineEmits<Emits>();
 
-const { cssRender, c } = useCssRender();
-
 const { bool: isHover, setTrue, setFalse } = useBoolean();
 
 const isIconActive = computed(() => props.isActive || isHover.value);
@@ -79,7 +78,8 @@ function handleClose(e: MouseEvent) {
   emit('close');
 }
 
-cssRender(
+const { c } = CssRender();
+const style = c(
   '.admin-tab__button-tab',
   {
     position: 'relative',
@@ -100,5 +100,7 @@ cssRender(
     c('&__icon', { paddingLeft: '10px' })
   ]
 );
+style.render();
+style.mount();
 </script>
 <style scoped></style>
