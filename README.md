@@ -1,6 +1,7 @@
 # @soybeanjs/vue-admin-tab
 
 this is an admin tab component.
+
 ## install
 
 ### npm
@@ -28,4 +29,4 @@ import { ButtonTab, ChromeTab } from '@soybeanjs/vue-admin-tab';
 import type { ButtonTabProps, ChromeTabProps } from '@soybeanjs/vue-admin-tab';
 ```
 
-Online Example: https://soybean-admin-tab.vercel.app/
+Online Example: [https://soybean-admin-tab.vercel.app/](https://soybean-admin-tab.vercel.app/)
