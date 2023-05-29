@@ -30,7 +30,8 @@
 </template>
 
 <script setup lang="ts">
-import { ChromeTab, ButtonTab } from '../dist';
+import ButtonTab from './ButtonTab.vue';
+import ChromeTab from './ChromeTab.vue';
 import { useBoolean } from './hooks';
 
 const { bool: darkMode, toggle } = useBoolean();

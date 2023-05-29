@@ -44,7 +44,7 @@
     "update-version": "bumpp --commit --push --tag",
     "typecheck": "vue-tsc --noEmit",
     "publish-pkg": "pnpm -r publish --access public",
-    "release": "pnpm update-version && pnpm build && pnpm publish-pkg"
+    "release": "pnpm update-version && pnpm build:lib && pnpm publish-pkg"
   },
   "dependencies": {
     "@unocss/reset": "^0.52.4",
